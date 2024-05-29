@@ -1,6 +1,3 @@
-# Installing ollama
-curl -fsSL https://ollama.com/install.sh | sh;
-
 # Installing dumbpipe
 curl -sL https://www.dumbpipe.dev/install.sh | sh;
 
