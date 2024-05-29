@@ -1,3 +1,8 @@
+if [ -z "$1" ]; then
+    echo "No argument provided."
+    exit 1
+fi
+
 # Installing dumbpipe
 curl -sL https://www.dumbpipe.dev/install.sh | sh;
 
@@ -15,6 +20,9 @@ sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Connecting dumbpipe
+nohup ./dumbpipe connect-tcp --addr 0.0.0.0:3001 $1;
 
 # Installing and Running Open Web UI Docker Container
 sudo docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://0.0.0.0:3001 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
