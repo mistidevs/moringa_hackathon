@@ -1,6 +1,9 @@
 # Installing ollama
 curl -fsSL https://ollama.com/install.sh | sh;
 
+# Installing dumbpipe
+curl -sL https://www.dumbpipe.dev/install.sh | sh;
+
 # Installing docker
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -17,7 +20,7 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Installing and Running Open Web UI Docker Container
-sudo docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+sudo docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://0.0.0.0:3001 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 
 # Check if container is running
 sudo docker ps
